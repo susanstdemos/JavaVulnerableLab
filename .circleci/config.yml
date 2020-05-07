@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Install CxCLI Plugin
           command: |
-            wget -O ~/cxcli.zip https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.0.zip
+            wget -O ~/cxcli.zip https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip
             unzip ~/cxcli.zip -d ~/cxcli
             chmod +x ~/cxcli/runCxConsole.sh
 
@@ -20,7 +20,7 @@ jobs:
               -CxServer $CX_SERVER \
               -CxUser $CX_USER \
               -CxPassword $CX_PASSWORD \
-              -ProjectName "$CX_TEAM\\$CX_PROJECT" \
+              -ProjectName "$CX_TEAM/$CX_PROJECT" \
               -LocationType folder \
               -LocationPath ~/project \
               -ReportXML $CX_PROJECT-results.xml \
