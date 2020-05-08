@@ -18,9 +18,8 @@ jobs:
           command: |
             ~/cxcli/runCxConsole.sh Scan \
               -CxServer $CX_SERVER \
-              -CxUser $CX_USER \
-              -CxPassword $CX_PASSWORD \
-              -ProjectName "$CX_TEAM\$CX_PROJECT" \
+              -CxToken $CX_TOKEN \
+              -ProjectName '$CX_TEAM\\$CX_PROJECT' \
               -LocationType folder \
               -LocationPath ~/project \
               -ReportXML $CX_PROJECT-results.xml \
