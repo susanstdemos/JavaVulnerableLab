@@ -20,10 +20,13 @@ jobs:
       - run:
           name: Execute CxSAST Scan
           command: |
+            echo $CX_SERVER
+            echo $CX_TOKEN
+            echo "$CX_TEAM\\$CX_PROJECT"
             ~/CxConsolePlugin-2020.1.12/runCxConsole.sh Scan \
               -CxServer $CX_SERVER \
-              -CxToken $CX_TOKEN \
-              -ProjectName '$CX_TEAM\\$CX_PROJECT' \
+              -CxToken "$CX_TOKEN" \
+              -ProjectName "$CX_TEAM\\$CX_PROJECT" \
               -LocationType folder \
               -LocationPath ~/project \
               -ReportXML $CX_PROJECT-results.xml \
