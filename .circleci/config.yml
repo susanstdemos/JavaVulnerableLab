@@ -11,12 +11,12 @@ jobs:
           command: |
             wget -O ~/cxcli.zip https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip
             unzip ~/cxcli.zip -d ~/cxcli
-            chmod +x ~/cxcli/runCxConsole.sh
+            chmod +x ~/cxcli/CxConsolePlugin-8.90.2/runCxConsole.sh
 
       - run:
           name: Execute CxSAST Scan
           command: |
-            ~/cxcli/runCxConsole.sh Scan \
+            ~/cxcli/CxConsolePlugin-8.90.2/runCxConsole.sh Scan \
               -CxServer $CX_SERVER \
               -CxToken $CX_TOKEN \
               -ProjectName '$CX_TEAM\\$CX_PROJECT' \
