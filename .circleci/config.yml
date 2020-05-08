@@ -10,7 +10,7 @@ jobs:
           name: Install CxCLI Plugin
           command: |
             wget -O ~/cxcli.zip https://download.checkmarx.com/9.0.0/Plugins/cli-2020.1.12.zip
-            unzip ~/cxcli.zip -d ~/cxcli
+            unzip ~/cxcli.zip -d ~/.
             cd ~/CxConsolePlugin-2020.1.12
             cat -v runCxConsole.sh | sed -e "s/\^M$//" > runCxConsole-fixed.sh
             rm -f runCxConsole.sh
