@@ -38,7 +38,8 @@ jobs:
           name: Moving Artifacts
           command: |
             mkdir ~/artifacts
-            mv ~/CxConsolePlugin-2020.1.12/$CX_PROJECT/* ~/artifacts
+            mv ~/CxConsolePlugin-2020.1.12/Checkmarx/Reports/$CX_PROJECT-results.xml ~/artifacts
+            mv ~/CxConsolePlugin-2020.1.12/Checkmarx/Reports/$CX_PROJECT-results.pdf ~/artifacts
 
       # Store the generated reports with the build logs in CircleCI
       - store_artifacts:
