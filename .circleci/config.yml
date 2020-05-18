@@ -9,9 +9,10 @@ jobs:
       - run:
           name: Install CxCLI Plugin
           command: |
-            wget -O ~/cxcli.zip https://download.checkmarx.com/9.0.0/Plugins/cli-2020.1.12.zip
-            unzip ~/cxcli.zip -d ~/.
-            cd ~/CxConsolePlugin-2020.1.12
+            wget -O ~/cxcli.zip https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.3.zip
+            mkdir ~/CxConsole
+            unzip ~/cxcli.zip -d ~/CxConsole
+            cd ~/CxConsole
             cat -v runCxConsole.sh | sed -e "s/\^M$//" > runCxConsole-fixed.sh
             rm -f runCxConsole.sh
             mv runCxConsole-fixed.sh runCxConsole.sh
@@ -23,7 +24,7 @@ jobs:
             echo $CX_SERVER
             echo $CX_TOKEN
             echo "$CX_TEAM\\$CX_PROJECT"
-            ~/CxConsolePlugin-2020.1.12/runCxConsole.sh Scan \
+            ~/CxConsole/runCxConsole.sh Scan \
               -CxServer $CX_SERVER \
               -CxToken "$CX_TOKEN" \
               -ProjectName "$CX_TEAM\\$CX_PROJECT" \
@@ -38,8 +39,8 @@ jobs:
           name: Moving Artifacts
           command: |
             mkdir ~/artifacts
-            mv ~/CxConsolePlugin-2020.1.12/Checkmarx/Reports/$CX_PROJECT-results.xml ~/artifacts
-            mv ~/CxConsolePlugin-2020.1.12/Checkmarx/Reports/$CX_PROJECT-results.pdf ~/artifacts
+            mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-results.xml ~/artifacts
+            mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-results.pdf ~/artifacts
 
       # Store the generated reports with the build logs in CircleCI
       - store_artifacts:
