@@ -16,7 +16,7 @@ jobs:
             - ~/.m2
           key: project-{{ checksum "pom.xml" }}
           
-      - run: mvn package # run the actual tests
+      #- run: mvn package # run the actual tests
       
       - run:
           name: Install CxCLI Plugin
@@ -57,7 +57,9 @@ jobs:
             mv ~/CxConsole/Checkmarx/Reports/OSADependencies.json ~/artifacts
             mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-results.xml ~/artifacts
             mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-results.pdf ~/artifacts
-            mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-osa.json ~/artifacts
+            mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-osa_CxOSASummary.json ~/artifacts
+            mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-osa_CxOSALibraries.json ~/artifacts
+            mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-osa_CxOSAVulnerabilities.json ~/artifacts
 
       # Store the generated reports with the build logs in CircleCI
       - store_artifacts:
