@@ -19,7 +19,7 @@ jobs:
             chmod +x runCxConsole.sh
 
       - run:
-          name: Execute CxSAST Scan
+          name: Execute CxSAST & CxOSA Scan
           command: |
             echo $CX_SERVER
             echo $CX_TOKEN
@@ -30,6 +30,9 @@ jobs:
               -ProjectName "$CX_TEAM\\$CX_PROJECT" \
               -LocationType folder \
               -LocationPath ~/project \
+              -enableOsa \
+              -executepackagedependency \
+              -OsaJson $CX_PROJECT-osa.json \
               -ReportXML $CX_PROJECT-results.xml \
               -ReportPDF $CX_PROJECT-results.pdf \
               -Comment "git $CIRCLE_BRANCH@$CIRCLE_SHA1" \
@@ -41,6 +44,7 @@ jobs:
             mkdir ~/artifacts
             mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-results.xml ~/artifacts
             mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-results.pdf ~/artifacts
+            mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-osa.json ~/artifacts
 
       # Store the generated reports with the build logs in CircleCI
       - store_artifacts:
