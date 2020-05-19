@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+  
+    context: Checkmarx # use usage of organization context 'Checkmarx' for environment variables
+    
     docker:
       - image: circleci/openjdk:8u222-stretch
     steps:
