@@ -42,10 +42,10 @@ jobs:
           name: Moving Artifacts
           command: |
             mkdir ~/artifacts
+            mv ~/CxConsole/Checkmarx/Reports/OSADependencies.json ~/artifacts
             mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-results.xml ~/artifacts
             mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-results.pdf ~/artifacts
             mv ~/CxConsole/Checkmarx/Reports/$CX_PROJECT-osa.json ~/artifacts
-            mv ~/CxConsole/Checkmarx/Reports/OSADependencies.json ~/artifacts
 
       # Store the generated reports with the build logs in CircleCI
       - store_artifacts:
